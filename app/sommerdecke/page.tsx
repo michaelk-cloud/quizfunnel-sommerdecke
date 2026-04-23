@@ -5,39 +5,42 @@ export default function SommerdeckeLanding() {
   return (
     <div className="flex flex-col">
       {/* HERO */}
-      <section className="relative bg-[var(--color-ink)] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/decken/tencel-gaensedaunendecke.jpg"
-            alt=""
-            fill
-            priority
-            className="object-cover opacity-55"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-        </div>
+      <section className="bg-[var(--color-offwhite)]">
+        <div className="mx-auto max-w-7xl grid lg:grid-cols-2 items-stretch">
+          <div className="order-2 lg:order-1 px-6 py-14 sm:py-20 lg:py-24 lg:px-14 flex flex-col justify-center">
+            <p className="trust-chip mb-6">
+              <span>✦</span> Made in Germany – seit 1923
+            </p>
+            <h1 className="font-serif mb-6 text-[var(--color-ink)] text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.05]">
+              Schwitzen Sie
+              <br />
+              <em>Nacht für Nacht?</em>
+            </h1>
+            <p className="text-lg sm:text-xl text-[var(--color-muted)] leading-relaxed mb-10 max-w-xl">
+              Dann liegt es selten an der Hitze – sondern an Ihrer Decke. Finden Sie in
+              90 Sekunden die Sommerdecke aus der BEFA-Manufaktur, die Ihre Körperwärme
+              aktiv nach außen leitet.
+            </p>
+            <div>
+              <Link href="/sommerdecke/quiz" className="btn-primary">
+                Jetzt Decke finden – 90 Sekunden
+              </Link>
+            </div>
+            <p className="mt-5 text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]">
+              Kostenlos · inklusive 10 % Willkommens-Rabatt
+            </p>
+          </div>
 
-        <div className="relative mx-auto max-w-4xl px-6 pt-20 pb-24 sm:pt-28 sm:pb-32 text-center">
-          <p className="trust-chip justify-center mb-6 text-white/80">
-            <span>✦</span> Made in Germany – seit 1923
-          </p>
-          <h1 className="font-serif mb-6 text-white text-[clamp(2.5rem,6vw,4rem)] leading-[1.05]">
-            Schwitzen Sie
-            <br />
-            <em className="text-white">Nacht für Nacht?</em>
-          </h1>
-          <p className="max-w-2xl mx-auto text-lg sm:text-xl text-white/90 leading-relaxed mb-10">
-            Dann liegt es selten an der Hitze – sondern an Ihrer Decke. Finden Sie in
-            90 Sekunden die Sommerdecke aus der BEFA-Manufaktur, die Ihre Körperwärme
-            aktiv nach außen leitet.
-          </p>
-          <Link href="/sommerdecke/quiz" className="btn-primary bg-white text-[var(--color-ink)] border-white hover:bg-white/90 hover:text-[var(--color-ink)]">
-            Jetzt Decke finden – 90 Sekunden
-          </Link>
-          <p className="mt-5 text-xs uppercase tracking-[0.15em] text-white/70">
-            Kostenlos · inklusive 10 % Willkommens-Rabatt
-          </p>
+          <div className="order-1 lg:order-2 relative aspect-[4/5] lg:aspect-auto lg:min-h-[640px]">
+            <Image
+              src="/hero-sommerdecke.webp"
+              alt="Sommerdecke in hellem Schlafzimmer – BEFA Limburg"
+              fill
+              priority
+              className="object-cover"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
+          </div>
         </div>
       </section>
 

@@ -27,7 +27,7 @@ export default function SommerdeckeLanding() {
               </Link>
             </div>
             <p className="mt-5 text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]">
-              Kostenlos · inklusive 10 % Willkommens-Rabatt
+              Kostenlos · 8 Fragen · unverbindlich
             </p>
           </div>
 
@@ -116,7 +116,7 @@ export default function SommerdeckeLanding() {
           </h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          <Step number="01" title="9 Fragen beantworten">
+          <Step number="01" title="8 Fragen beantworten">
             Zu Schlaftemperatur, Raumklima, Material-Vorlieben und Bettgröße. Ehrliche
             Antworten – kein Fachwissen nötig.
           </Step>
@@ -124,9 +124,9 @@ export default function SommerdeckeLanding() {
             Der Algorithmus gewichtet Ihre Antworten und zeigt Ihnen die drei passendsten
             BEFA-Decken für Ihre Schlafsituation.
           </Step>
-          <Step number="03" title="10 % Rabatt sichern">
-            Email eintragen, Willkommens-Rabatt per Newsletter erhalten und direkt bei
-            befa-limburg.de bestellen.
+          <Step number="03" title="Direkt bestellen">
+            Klicken Sie auf Ihre Wunsch-Decke und bestellen Sie versandkostenfrei
+            direkt bei BEFA-Limburg.
           </Step>
         </div>
       </section>
@@ -149,17 +149,14 @@ export default function SommerdeckeLanding() {
           </h2>
           <p className="text-white/80 text-lg mb-8 leading-relaxed">
             Die falsche Decke ist der häufigste Grund für unruhige Sommernächte.
-            Beantworten Sie 9 Fragen und wir zeigen Ihnen die drei BEFA-Decken,
+            Beantworten Sie 8 Fragen und wir zeigen Ihnen die drei BEFA-Decken,
             die zu Ihrer Schlafsituation passen.
           </p>
-          <Link
-            href="/sommerdecke/quiz"
-            className="btn-primary bg-white text-[var(--color-ink)] border-white hover:bg-white/90 hover:text-[var(--color-ink)]"
-          >
+          <Link href="/sommerdecke/quiz" className="btn-secondary">
             Jetzt Quiz starten
           </Link>
           <p className="mt-5 text-xs uppercase tracking-[0.15em] text-white/60">
-            90 Sekunden · kostenlos · inklusive Rabatt-Code
+            90 Sekunden · 8 Fragen · unverbindlich
           </p>
         </div>
       </section>

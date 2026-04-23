@@ -19,7 +19,6 @@ const REQUIRED_KEYS: QuestionId[] = [
   "sleepSituation",
   "bedSize",
   "skinFeel",
-  "budget",
 ];
 
 function hasAllAnswers(answers: Answers): answers is Required<Answers> {

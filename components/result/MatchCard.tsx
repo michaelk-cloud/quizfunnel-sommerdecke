@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import type { MatchResult } from "@/lib/quiz/match";
@@ -8,6 +7,7 @@ import { trackPixel } from "@/lib/pixel";
 
 export function MatchCard({ match, rank }: { match: MatchResult; rank: number }) {
   const { decke, reasons } = match;
+  const shopHref = `${decke.shopUrl}?utm_source=quizfunnel&utm_medium=referral&utm_campaign=sommerdecke&utm_content=${decke.slug}`;
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -85,15 +85,22 @@ export function MatchCard({ match, rank }: { match: MatchResult; rank: number })
               {decke.priceFrom.toFixed(2).replace(".", ",")} €
             </div>
           </div>
-          <Link
-            href={`/sommerdecke/decke/${decke.slug}`}
+          <a
+            href={shopHref}
+            target="_blank"
+            rel="noopener"
             onClick={() =>
-              trackPixel("AddToWishlist", { content_ids: [decke.slug], content_name: decke.name })
+              trackPixel("InitiateCheckout", {
+                content_ids: [decke.slug],
+                content_name: decke.name,
+                value: decke.priceFrom,
+                currency: "EUR",
+              })
             }
             className="btn-primary text-sm"
           >
-            Details ansehen →
-          </Link>
+            Auf BEFA Limburg ansehen →
+          </a>
         </div>
       </div>
     </motion.article>

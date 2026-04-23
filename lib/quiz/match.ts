@@ -146,26 +146,6 @@ export function matchTop3(answers: Answers): MatchResult[] {
     add(scores, "mikrofaser-aloe-vera", 1);
   }
 
-  // 8. Budget
-  const budget = answers.budget;
-  decken.forEach((d) => {
-    if (budget === "low") {
-      if (d.priceFrom > 80) add(scores, d.slug, -5);
-      else add(scores, d.slug, 2, "Passt in dein Budget");
-    }
-    if (budget === "mid") {
-      if (d.priceFrom > 150) add(scores, d.slug, -3);
-      else if (d.priceFrom >= 60 && d.priceFrom <= 150) add(scores, d.slug, 2, "Passt in dein Budget");
-    }
-    if (budget === "high") {
-      if (d.priceFrom > 300) add(scores, d.slug, -2);
-      else if (d.priceFrom >= 100 && d.priceFrom <= 300) add(scores, d.slug, 2, "Passt in dein Budget");
-    }
-    if (budget === "premium" && d.priceFrom >= 150) {
-      add(scores, d.slug, 2, "Passt in dein Budget – Premium-Klasse");
-    }
-  });
-
   // Build result; tie-break: höherer Score zuerst, bei Gleichstand günstigerer Einstiegspreis zuerst
   const results: MatchResult[] = decken
     .map((d) => ({

@@ -13,7 +13,6 @@ const answerSchema = z.object({
   sleepSituation: z.string().min(1),
   bedSize: z.string().min(1),
   skinFeel: z.string().min(1),
-  budget: z.string().min(1),
 });
 
 const schema = z.object({
@@ -48,7 +47,6 @@ export async function subscribe(input: SubscribeInput) {
     quiz_sleep_situation: answers.sleepSituation,
     quiz_bed_size: answers.bedSize,
     quiz_skin_feel: answers.skinFeel,
-    quiz_budget: answers.budget,
     quiz_match_1: matches[0],
     quiz_match_2: matches[1],
     quiz_match_3: matches[2],

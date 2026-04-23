@@ -24,7 +24,7 @@ export function DeckeDetail({ decke }: { decke: Decke }) {
     <>
       <nav className="border-b border-[var(--color-border)] bg-white">
         <div className="mx-auto max-w-5xl px-5 py-4 text-sm">
-          <Link href="/ergebnis" className="text-[var(--color-muted)] hover:text-[var(--color-navy)]">
+          <Link href="/sommerdecke/ergebnis" className="text-[var(--color-muted)] hover:text-[var(--color-navy)]">
             ← Zurück zu deinen Matches
           </Link>
         </div>

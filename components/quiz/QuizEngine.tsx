@@ -42,7 +42,7 @@ export function QuizEngine() {
     setAnswer(q.id, value);
     setTimeout(() => {
       if (isLast) {
-        router.push("/ergebnis");
+        router.push("/sommerdecke/ergebnis");
       } else {
         setStep(step + 1);
       }

@@ -21,7 +21,7 @@ export function ErgebnisView() {
     if (!mounted) return;
     const filled = questions.filter((q) => answers[q.id]).length;
     if (filled < questions.length) {
-      router.replace("/quiz");
+      router.replace("/sommerdecke/quiz");
     } else {
       markCompleted();
     }
@@ -56,7 +56,7 @@ export function ErgebnisView() {
 
         <div className="mt-14 text-center">
           <button
-            onClick={() => router.push("/quiz")}
+            onClick={() => router.push("/sommerdecke/quiz")}
             className="text-sm text-[var(--color-muted)] hover:text-[var(--color-navy)] underline underline-offset-4"
           >
             Quiz neu starten

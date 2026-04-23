@@ -60,7 +60,7 @@ export function MatchCard({ match, rank }: { match: MatchResult; rank: number })
             </div>
           </div>
           <Link
-            href={`/decke/${decke.slug}`}
+            href={`/sommerdecke/decke/${decke.slug}`}
             onClick={() =>
               trackPixel("AddToWishlist", { content_ids: [decke.slug], content_name: decke.name })
             }

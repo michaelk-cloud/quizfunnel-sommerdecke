@@ -1,12 +1,15 @@
 export type QuestionId =
   | "temperature"
+  | "painDuration"
   | "roomClimate"
+  | "morningImpact"
   | "material"
   | "allergies"
   | "washing"
   | "sleepSituation"
   | "bedSize"
-  | "skinFeel";
+  | "skinFeel"
+  | "dreamState";
 
 export type Option = {
   value: string;
@@ -41,8 +44,22 @@ export const questions: Question[] = [
       "Die meisten Decken speichern Wärme – statt sie abzuleiten. BEFA fertigt seit 1994 in Limburg genau für dieses Problem.",
   },
   {
-    id: "roomClimate",
+    id: "painDuration",
     number: 2,
+    title: "Wie lange geht das schon so?",
+    subtitle: "Damit sind Sie nicht allein. Die gute Nachricht: Es lässt sich ändern.",
+    options: [
+      { value: "recent", label: "Seit diesem Sommer", emoji: "🌱" },
+      { value: "one_two", label: "Ein, zwei Jahre ungefähr", emoji: "📆" },
+      { value: "longer", label: "Schon länger – 3 Jahre oder mehr", emoji: "⏳" },
+      { value: "always", label: "Solange ich denken kann", emoji: "😮‍💨" },
+    ],
+    insight:
+      "Je länger die Nächte schlecht sind, desto mehr summiert sich das tagsüber – an Energie, Laune, Konzentration. Das muss nicht sein.",
+  },
+  {
+    id: "roomClimate",
+    number: 3,
     title: "Wie hart trifft Ihr Schlafzimmer die Sommerhitze?",
     subtitle: "Dachgeschoss, Westseite, kein Rollladen – das alles macht einen Unterschied.",
     options: [
@@ -55,8 +72,22 @@ export const questions: Question[] = [
       "Unsere Clima-Steppung wurde für genau diese Situation entwickelt: Sie leitet gestaute Körperwärme seitlich nach außen ab.",
   },
   {
+    id: "morningImpact",
+    number: 4,
+    title: "Wie starten Sie nach einer schlechten Nacht in den Tag?",
+    subtitle: "Was viele unterschätzen: wie sehr eine Nacht den ganzen Tag färbt.",
+    options: [
+      { value: "irritated", label: "Gereizt – schon beim ersten Kaffee", emoji: "😤" },
+      { value: "exhausted", label: "Müde, obwohl ich „genug“ geschlafen habe", emoji: "🥱" },
+      { value: "foggy", label: "Kopf dumpf, Konzentration fehlt", emoji: "🌫" },
+      { value: "ok", label: "Eigentlich ok – noch", emoji: "🙂" },
+    ],
+    insight:
+      "Guter Schlaf ist kein Luxus. Er ist die Grundlage für Energie, Geduld, Fokus. Wer das einmal spürt, will nicht mehr zurück.",
+  },
+  {
     id: "material",
-    number: 3,
+    number: 5,
     title: "Wenn Sie an Ihre ideale Decke denken – woraus ist sie?",
     subtitle: "Es gibt kein falsch. Jedes Material hat seinen eigenen Charakter.",
     options: [
@@ -70,7 +101,7 @@ export const questions: Question[] = [
   },
   {
     id: "allergies",
-    number: 4,
+    number: 6,
     title: "Reagiert Ihre Haut auf etwas – oder sind Sie empfindlich?",
     subtitle: "Kein Grund zur Sorge. Wir haben für jede Empfindlichkeit die passende Lösung.",
     options: [
@@ -84,7 +115,7 @@ export const questions: Question[] = [
   },
   {
     id: "washing",
-    number: 5,
+    number: 7,
     title: "Soll Ihre Decke auch in 5 Jahren noch frisch sein?",
     subtitle: "Waschbarkeit entscheidet, wie lange sich eine Decke wirklich gut anfühlt.",
     options: [
@@ -97,7 +128,7 @@ export const questions: Question[] = [
   },
   {
     id: "sleepSituation",
-    number: 6,
+    number: 8,
     title: "Teilen Sie Ihr Bett – oder gehört es nur Ihnen?",
     options: [
       { value: "single", label: "Nur mir – herrlich", emoji: "🛏" },
@@ -108,7 +139,7 @@ export const questions: Question[] = [
   },
   {
     id: "bedSize",
-    number: 7,
+    number: 9,
     title: "Welche Größe hat Ihre Matratze?",
     subtitle: "Wir empfehlen Ihnen die passende Decken-Größe – ohne Rechnerei.",
     options: [
@@ -123,7 +154,7 @@ export const questions: Question[] = [
   },
   {
     id: "skinFeel",
-    number: 8,
+    number: 10,
     title: "Stellen Sie sich vor, Sie liegen gerade im Bett – wie fühlt sich die Decke an?",
     subtitle: "Das entscheidet über das kleine Glück der ersten Minuten nach dem Hinlegen.",
     options: [
@@ -133,6 +164,21 @@ export const questions: Question[] = [
     ],
     insight:
       "Unser Tencel-Bezug nimmt bis zu 50 % mehr Feuchtigkeit auf als Baumwolle – und bleibt kühl-glatt, selbst bei 28 °C im Schlafzimmer.",
+  },
+  {
+    id: "dreamState",
+    number: 11,
+    title: "Wenn Sie wieder wirklich durchschlafen – was wäre das wert?",
+    subtitle:
+      "Stellen Sie sich den ersten Kaffee morgen vor: nicht gerädert, sondern klar und wach.",
+    options: [
+      { value: "energy", label: "Endlich Energie für den Tag", emoji: "⚡" },
+      { value: "patience", label: "Geduldiger mit Familie und Kollegen", emoji: "🫶" },
+      { value: "focus", label: "Konzentrierter bei der Arbeit", emoji: "🎯" },
+      { value: "myself", label: "Einfach wieder ich selbst sein", emoji: "🌅" },
+    ],
+    insight:
+      "Unsere Kunden berichten dasselbe: Die erste durchgeschlafene Woche vergisst man nicht mehr. Genau darauf arbeiten wir zu.",
   },
 ];
 

@@ -6,13 +6,16 @@ import { subscribeToList, trackEvent, upsertProfile } from "@/lib/klaviyo";
 
 const answerSchema = z.object({
   temperature: z.string().min(1),
+  painDuration: z.string().min(1),
   roomClimate: z.string().min(1),
+  morningImpact: z.string().min(1),
   material: z.string().min(1),
   allergies: z.string().min(1),
   washing: z.string().min(1),
   sleepSituation: z.string().min(1),
   bedSize: z.string().min(1),
   skinFeel: z.string().min(1),
+  dreamState: z.string().min(1),
 });
 
 const schema = z.object({
@@ -40,13 +43,16 @@ export async function subscribe(input: SubscribeInput) {
   const properties = {
     quiz_source: "sommerdecke-quiz",
     quiz_temperature: answers.temperature,
+    quiz_pain_duration: answers.painDuration,
     quiz_room_climate: answers.roomClimate,
+    quiz_morning_impact: answers.morningImpact,
     quiz_material_pref: answers.material,
     quiz_allergies: answers.allergies,
     quiz_washing: answers.washing,
     quiz_sleep_situation: answers.sleepSituation,
     quiz_bed_size: answers.bedSize,
     quiz_skin_feel: answers.skinFeel,
+    quiz_dream_state: answers.dreamState,
     quiz_match_1: matches[0],
     quiz_match_2: matches[1],
     quiz_match_3: matches[2],

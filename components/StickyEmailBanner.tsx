@@ -12,13 +12,16 @@ const DISCOUNT_CODE = process.env.NEXT_PUBLIC_DISCOUNT_CODE || "BEFA10";
 
 const REQUIRED_KEYS: QuestionId[] = [
   "temperature",
+  "painDuration",
   "roomClimate",
+  "morningImpact",
   "material",
   "allergies",
   "washing",
   "sleepSituation",
   "bedSize",
   "skinFeel",
+  "dreamState",
 ];
 
 function hasAllAnswers(answers: Answers): answers is Required<Answers> {

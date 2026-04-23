@@ -27,7 +27,7 @@ export default function SommerdeckeLanding() {
               </Link>
             </div>
             <p className="mt-5 text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]">
-              Kostenlos · 8 Fragen · unverbindlich
+              Kostenlos · 2 Minuten · unverbindlich
             </p>
           </div>
 
@@ -116,7 +116,7 @@ export default function SommerdeckeLanding() {
           </h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          <Step number="01" title="8 Fragen beantworten">
+          <Step number="01" title="Kurze Fragen beantworten">
             Zu Schlaftemperatur, Raumklima, Material-Vorlieben und Bettgröße. Ehrliche
             Antworten – kein Fachwissen nötig.
           </Step>
@@ -149,14 +149,14 @@ export default function SommerdeckeLanding() {
           </h2>
           <p className="text-white/80 text-lg mb-8 leading-relaxed">
             Die falsche Decke ist der häufigste Grund für unruhige Sommernächte.
-            Beantworten Sie 8 Fragen und wir zeigen Ihnen die drei BEFA-Decken,
-            die zu Ihrer Schlafsituation passen.
+            Beantworten Sie ein paar kurze Fragen und wir zeigen Ihnen die drei
+            BEFA-Decken, die zu Ihrer Schlafsituation passen.
           </p>
           <Link href="/sommerdecke/quiz" className="btn-secondary">
             Jetzt Quiz starten
           </Link>
           <p className="mt-5 text-xs uppercase tracking-[0.15em] text-white/60">
-            90 Sekunden · 8 Fragen · unverbindlich
+            2 Minuten · unverbindlich · sofort das Ergebnis
           </p>
         </div>
       </section>

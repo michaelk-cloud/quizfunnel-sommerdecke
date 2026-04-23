@@ -62,12 +62,12 @@ export function StickyEmailBanner() {
     const emailValue = (formData.get("email") as string | null)?.trim() ?? "";
 
     if (!emailValue || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
-      setError("Bitte gib eine gültige Email-Adresse ein.");
+      setError("Bitte geben Sie eine gültige Email-Adresse ein.");
       return;
     }
 
     if (!hasAllAnswers(answers)) {
-      setError("Bitte beantworte erst alle Quiz-Fragen.");
+      setError("Bitte beantworten Sie erst alle Quiz-Fragen.");
       return;
     }
 
@@ -121,11 +121,11 @@ export function StickyEmailBanner() {
             className="mx-auto max-w-4xl px-4 py-4 sm:py-5 flex flex-col sm:flex-row gap-3 sm:gap-5 sm:items-center"
           >
             <div className="flex-1 min-w-0">
-              <p className="font-serif text-lg sm:text-xl leading-tight text-[var(--color-navy)]">
-                Hol dir deinen persönlichen Decken-Report + 10 % Rabatt.
+              <p className="font-serif text-lg sm:text-xl leading-tight text-[var(--color-ink)]">
+                10 % Willkommens-Rabatt sichern.
               </p>
               <p className="text-xs text-[var(--color-muted)] mt-0.5">
-                Wir schicken dir deine Matches per Email. Abmeldung jederzeit möglich.
+                Zum BEFA-Newsletter anmelden, Code per Email erhalten. Abmeldung jederzeit möglich.
               </p>
             </div>
             <form
@@ -143,7 +143,7 @@ export function StickyEmailBanner() {
                 inputMode="email"
                 autoComplete="email"
                 required
-                placeholder="deine@email.de"
+                placeholder="ihre@email.de"
                 disabled={isPending}
                 className="flex-1 px-4 py-3 border border-[var(--color-border)] rounded-[4px] text-base focus:outline-none focus:border-[var(--color-navy)] bg-white disabled:opacity-60"
               />
@@ -169,11 +169,11 @@ export function StickyEmailBanner() {
             className="mx-auto max-w-4xl px-4 py-4 sm:py-5 flex flex-col sm:flex-row gap-3 sm:items-center"
           >
             <div className="flex-1">
-              <p className="font-serif text-lg sm:text-xl leading-tight text-[var(--color-navy)]">
-                Dein Code: <span className="text-[var(--color-accent-dark)]">{DISCOUNT_CODE}</span>
+              <p className="font-serif text-lg sm:text-xl leading-tight text-[var(--color-ink)]">
+                Ihr Code: <span className="text-[var(--color-sale)] font-semibold">{DISCOUNT_CODE}</span>
               </p>
               <p className="text-xs text-[var(--color-muted)]">
-                Bei befa-limburg.de im Checkout einlösen. 10 % auf deine Sommerdecke.
+                Bei befa-limburg.de im Checkout einlösen. 10 % auf Ihre Sommerdecke.
               </p>
             </div>
             <button onClick={copyCode} className="btn-secondary whitespace-nowrap">

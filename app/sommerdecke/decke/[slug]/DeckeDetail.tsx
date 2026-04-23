@@ -32,13 +32,13 @@ export function DeckeDetail({ decke }: { decke: Decke }) {
     <>
       <nav className="border-b border-[var(--color-border)] bg-white">
         <div className="mx-auto max-w-5xl px-5 py-4 text-sm">
-          <Link href="/sommerdecke/ergebnis" className="text-[var(--color-muted)] hover:text-[var(--color-navy)]">
-            ← Zurück zu deinen Matches
+          <Link href="/sommerdecke/ergebnis" className="text-[var(--color-muted)] hover:text-[var(--color-ink)]">
+            ← Zurück zu Ihren Matches
           </Link>
         </div>
       </nav>
 
-      <section className="bg-[var(--color-cream)] py-12 sm:py-16">
+      <section className="bg-[var(--color-offwhite)] py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-5 grid md:grid-cols-2 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -58,13 +58,13 @@ export function DeckeDetail({ decke }: { decke: Decke }) {
             <p className="trust-chip mb-3">
               <span>✦</span> Made in Germany
             </p>
-            <h1 className="font-serif text-[var(--color-navy)] mb-3">{decke.name}</h1>
+            <h1 className="font-serif text-[var(--color-ink)] mb-3">{decke.name}</h1>
             <p className="text-lg text-[var(--color-muted)] mb-5">{decke.tagline}</p>
             <p className="text-[var(--color-ink)] leading-relaxed mb-6">{decke.description}</p>
 
             <div className="flex items-baseline gap-3 mb-6">
               <span className="text-sm text-[var(--color-muted)]">ab</span>
-              <span className="font-serif text-3xl text-[var(--color-navy)]">
+              <span className="font-serif text-3xl text-[var(--color-ink)]">
                 {decke.priceFrom.toFixed(2).replace(".", ",")} €
               </span>
             </div>
@@ -76,7 +76,7 @@ export function DeckeDetail({ decke }: { decke: Decke }) {
               onClick={onBuy}
               className="btn-primary w-full sm:w-auto"
             >
-              Jetzt auf befa-limburg.de kaufen →
+              Jetzt bei befa-limburg.de bestellen →
             </a>
           </div>
         </div>
@@ -84,7 +84,7 @@ export function DeckeDetail({ decke }: { decke: Decke }) {
 
       <section className="mx-auto max-w-5xl px-5 py-16 grid md:grid-cols-2 gap-10">
         <div>
-          <h2 className="font-serif text-[var(--color-navy)] mb-6">Darum passt sie zu dir</h2>
+          <h2 className="font-serif text-[var(--color-ink)] mb-6">Darum passt sie zu Ihnen</h2>
           <ul className="space-y-3">
             {decke.usps.map((u, i) => (
               <li key={i} className="flex gap-3">
@@ -96,7 +96,7 @@ export function DeckeDetail({ decke }: { decke: Decke }) {
         </div>
 
         <div className="card p-6">
-          <h3 className="font-serif text-xl text-[var(--color-navy)] mb-4">Material & Pflege</h3>
+          <h3 className="font-serif text-xl text-[var(--color-ink)] mb-4">Material & Pflege</h3>
           <dl className="space-y-3 text-sm">
             <Row label="Material" value={decke.material} />
             <Row label="Wärmeklasse" value={["Sehr kühl", "Kühl-mittel", "Mittel"][decke.warmthLevel - 1]} />
@@ -108,21 +108,21 @@ export function DeckeDetail({ decke }: { decke: Decke }) {
         </div>
       </section>
 
-      <section className="bg-[var(--color-navy)] text-white py-14">
+      <section className="bg-[var(--color-ink)] text-white py-14">
         <div className="mx-auto max-w-3xl px-5 text-center">
-          <h2 className="font-serif mb-4">Bereit für deine neue Sommerdecke?</h2>
+          <h2 className="font-serif mb-4 text-white">Bereit für Ihre neue Sommerdecke?</h2>
           <p className="text-white/80 mb-6">
-            Trag oben deine Email ein, sichere dir 10 % Rabatt und bestelle direkt bei BEFA
-            Limburg – handgefertigt in Deutschland.
+            Tragen Sie oben Ihre Email ein, sichern Sie sich 10 % Willkommens-Rabatt und
+            bestellen Sie direkt bei BEFA Limburg – handgefertigt in Deutschland.
           </p>
           <a
             href={shopUrl}
             target="_blank"
             rel="noopener"
             onClick={onBuy}
-            className="inline-flex items-center gap-2 bg-white text-[var(--color-navy)] px-6 py-3 rounded-[4px] font-medium hover:bg-[var(--color-cream)] transition-colors"
+            className="btn-primary bg-white text-[var(--color-ink)] border-white hover:bg-white/90"
           >
-            Zum Shop →
+            Zum BEFA-Shop →
           </a>
         </div>
       </section>

@@ -42,17 +42,17 @@ export function ErgebnisView() {
 
   return (
     <>
-      <section className="bg-[var(--color-cream)] py-12 sm:py-16">
+      <section className="bg-[var(--color-offwhite)] py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-5 text-center">
           <p className="trust-chip justify-center mb-4">
-            <span>✦</span> Dein Ergebnis
+            <span>✦</span> Ihr Ergebnis
           </p>
-          <h1 className="font-serif text-[var(--color-navy)] mb-4">
-            Diese drei Sommerdecken passen zu dir.
+          <h1 className="font-serif text-[var(--color-ink)] mb-4">
+            Diese drei Sommerdecken passen zu <em>Ihnen</em>.
           </h1>
           <p className="text-lg text-[var(--color-muted)] max-w-2xl mx-auto">
-            Auf Basis deiner Antworten haben wir die drei passendsten BEFA-Decken
-            berechnet. Klick dich durch, sichere dir 10 % Rabatt und bestelle direkt im Shop.
+            Auf Basis Ihrer Antworten haben wir die drei passendsten BEFA-Decken berechnet.
+            Sichern Sie sich 10 % Willkommens-Rabatt und bestellen Sie direkt bei BEFA.
           </p>
         </div>
       </section>
@@ -67,10 +67,17 @@ export function ErgebnisView() {
           ))}
         </div>
 
-        <div className="mt-14 text-center">
+        <div className="mt-14 border-y border-[var(--color-border)] py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <TrustItem value="100" unit="Jahre" label="Manufaktur in Limburg" />
+          <TrustItem value="Oeko-Tex" unit="Standard 100" label="Schadstoff-geprüft" />
+          <TrustItem value="Downpass" unit="zertifiziert" label="Tierschutz-Standard" />
+          <TrustItem value="Made in" unit="Germany" label="Handgefertigt" />
+        </div>
+
+        <div className="mt-10 text-center">
           <button
             onClick={() => router.push("/sommerdecke/quiz")}
-            className="text-sm text-[var(--color-muted)] hover:text-[var(--color-navy)] underline underline-offset-4"
+            className="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)] underline underline-offset-4"
           >
             Quiz neu starten
           </button>
@@ -79,5 +86,29 @@ export function ErgebnisView() {
 
       <StickyEmailBanner />
     </>
+  );
+}
+
+function TrustItem({
+  value,
+  unit,
+  label,
+}: {
+  value: string;
+  unit: string;
+  label: string;
+}) {
+  return (
+    <div>
+      <div className="font-serif text-2xl text-[var(--color-ink)] leading-none">
+        {value}
+        <span className="text-sm font-sans font-normal ml-1 text-[var(--color-muted)]">
+          {unit}
+        </span>
+      </div>
+      <div className="mt-1 text-xs uppercase tracking-[0.08em] text-[var(--color-muted)]">
+        {label}
+      </div>
+    </div>
   );
 }

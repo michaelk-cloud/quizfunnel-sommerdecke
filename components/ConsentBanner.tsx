@@ -39,15 +39,15 @@ export function ConsentBanner() {
           className="fixed bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:bottom-6 sm:max-w-md z-50"
         >
           <div className="card p-5 shadow-xl border-[var(--color-navy)]/20">
-            <p className="font-serif text-lg text-[var(--color-navy)] mb-2 leading-snug">
+            <p className="font-serif text-lg text-[var(--color-ink)] mb-2 leading-snug">
               Cookies & Tracking
             </p>
             <p className="text-sm text-[var(--color-muted)] leading-relaxed">
-              Wir setzen technisch notwendige Cookies und – nach deiner Zustimmung – den
+              Wir setzen technisch notwendige Cookies und – nach Ihrer Zustimmung – den
               Meta Pixel ein, um die Reichweite unserer Anzeigen zu messen.{" "}
               <Link
                 href="/datenschutz"
-                className="underline hover:text-[var(--color-navy)]"
+                className="underline hover:text-[var(--color-ink)]"
               >
                 Mehr erfahren
               </Link>

@@ -1,71 +1,197 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function SommerdeckeLanding() {
   return (
     <div className="flex flex-col">
-      <section className="relative overflow-hidden bg-[var(--color-cream)]">
-        <div className="mx-auto max-w-5xl px-6 pt-14 pb-20 sm:pt-20 sm:pb-28 text-center">
-          <p className="trust-chip justify-center mb-6">
+      {/* HERO */}
+      <section className="relative bg-[var(--color-ink)] text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/decken/tencel-gaensedaunendecke.jpg"
+            alt=""
+            fill
+            priority
+            className="object-cover opacity-55"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        </div>
+
+        <div className="relative mx-auto max-w-4xl px-6 pt-20 pb-24 sm:pt-28 sm:pb-32 text-center">
+          <p className="trust-chip justify-center mb-6 text-white/80">
             <span>✦</span> Made in Germany – seit 1923
           </p>
-          <h1 className="font-serif text-[var(--color-navy)] mb-5">
-            Finde deine perfekte Sommerdecke
+          <h1 className="font-serif mb-6 text-white text-[clamp(2.5rem,6vw,4rem)] leading-[1.05]">
+            Schwitzen Sie
             <br />
-            <span className="italic text-[var(--color-accent-dark)]">in 90 Sekunden.</span>
+            <em className="text-white">Nacht für Nacht?</em>
           </h1>
-          <p className="max-w-xl mx-auto text-lg text-[var(--color-muted)] mb-10">
-            Beantworte 9 kurze Fragen. Unser Algorithmus vergleicht deine Schlafgewohnheiten
-            mit dem BEFA-Sortiment und empfiehlt dir die drei passendsten Sommerdecken –
-            inklusive 10 % Gutschein.
+          <p className="max-w-2xl mx-auto text-lg sm:text-xl text-white/90 leading-relaxed mb-10">
+            Dann liegt es selten an der Hitze – sondern an Ihrer Decke. Finden Sie in
+            90 Sekunden die Sommerdecke aus der BEFA-Manufaktur, die Ihre Körperwärme
+            aktiv nach außen leitet.
           </p>
-          <Link href="/sommerdecke/quiz" className="btn-primary text-base">
-            Quiz starten – kostenlos
+          <Link href="/sommerdecke/quiz" className="btn-primary bg-white text-[var(--color-ink)] border-white hover:bg-white/90 hover:text-[var(--color-ink)]">
+            Jetzt Decke finden – 90 Sekunden
           </Link>
+          <p className="mt-5 text-xs uppercase tracking-[0.15em] text-white/70">
+            Kostenlos · inklusive 10 % Willkommens-Rabatt
+          </p>
+        </div>
+      </section>
 
-          <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl mx-auto">
-            <Trust label="Oeko-Tex" />
-            <Trust label="Downpass" />
-            <Trust label="Handgefertigt" />
-            <Trust label="Seit 1923" />
+      {/* PROBLEM */}
+      <section className="mx-auto max-w-4xl px-6 py-20 sm:py-24">
+        <div className="text-center mb-14">
+          <p className="trust-chip justify-center mb-4">Das eigentliche Problem</p>
+          <h2 className="font-serif text-[var(--color-ink)] mb-5">
+            Wenn Sie nachts schwitzen, ist selten <em>die Hitze</em> schuld.
+          </h2>
+          <p className="text-lg text-[var(--color-muted)] max-w-2xl mx-auto leading-relaxed">
+            Standard-Sommerdecken aus dem Möbelhaus stauen Wärme statt sie abzuleiten.
+            Die Folge: Sie wachen durchgeschwitzt auf, wälzen sich, sind morgens gerädert.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-6 sm:gap-8 text-center">
+          <Problem
+            title="Synthetik-Füllung"
+            text="Speichert Wärme und Feuchtigkeit – bis es drunter tropft."
+          />
+          <Problem
+            title="Dichter Bezug"
+            text="Polyester-Gewebe lässt keine Luft durch. Hitzestau vorprogrammiert."
+          />
+          <Problem
+            title="Kein Feuchtigkeits­management"
+            text="Schweiß bleibt zwischen Haut und Stoff – statt zu verdunsten."
+          />
+        </div>
+      </section>
+
+      {/* LÖSUNG */}
+      <section className="bg-[var(--color-offwhite)] py-20 sm:py-24">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center mb-14">
+            <p className="trust-chip justify-center mb-4">Die BEFA-Manufaktur</p>
+            <h2 className="font-serif text-[var(--color-ink)] mb-5">
+              Eine Decke, die Ihre <em>Körperwärme</em> aktiv nach außen leitet.
+            </h2>
+            <p className="text-lg text-[var(--color-muted)] max-w-2xl mx-auto leading-relaxed">
+              In Limburg produziert BEFA seit 1923 Bettdecken, die für deutsche Sommernächte
+              gemacht sind – mit Materialien, die Körperwärme wegführen statt sie zu speichern.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <Solution
+              tag="Tencel-Bezug"
+              title="Transportiert Feuchtigkeit aktiv ab"
+              text="Pflanzenbasierte Fasern, die bis zu 50 % mehr Feuchtigkeit aufnehmen als Baumwolle – kühl-glatt auf der Haut."
+            />
+            <Solution
+              tag="Clima-Steppung"
+              title="Leitet Wärme nach außen"
+              text="Speziell entwickelte Kammer-Struktur, die aufgestaute Körperwärme seitlich nach außen entweichen lässt."
+            />
+            <Solution
+              tag="Aloe-Vera-Ausrüstung"
+              title="Hautfreundlich für sensible Schläfer"
+              text="Zusätzlich bei 60 °C waschbar – für Allergiker das Wichtigste in der warmen Jahreszeit."
+            />
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 py-20">
-        <h2 className="font-serif text-[var(--color-navy)] text-center mb-14">
-          Wie das Matching funktioniert
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <Step number="1" title="9 Fragen beantworten">
-            Wir fragen nach Schlaftemperatur, Materialpräferenz, Allergien, Bettgröße und
-            Budget. Dauert keine 90 Sekunden.
+      {/* WIE FUNKTIONIERT DAS QUIZ */}
+      <section className="mx-auto max-w-4xl px-6 py-20 sm:py-24">
+        <div className="text-center mb-14">
+          <p className="trust-chip justify-center mb-4">So funktioniert es</p>
+          <h2 className="font-serif text-[var(--color-ink)] mb-4">
+            In 90 Sekunden zu <em>Ihrer</em> Decke.
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          <Step number="01" title="9 Fragen beantworten">
+            Zu Schlaftemperatur, Raumklima, Material-Vorlieben und Bettgröße. Ehrliche
+            Antworten – kein Fachwissen nötig.
           </Step>
-          <Step number="2" title="Drei Decken-Matches erhalten">
-            Unser Algorithmus gewichtet deine Antworten und zeigt dir die drei besten
-            BEFA-Decken für deine Schlafsituation.
+          <Step number="02" title="Ihre Top-3 sehen">
+            Der Algorithmus gewichtet Ihre Antworten und zeigt Ihnen die drei passendsten
+            BEFA-Decken für Ihre Schlafsituation.
           </Step>
-          <Step number="3" title="10 % Gutschein sichern">
-            Email eintragen, Rabattcode erhalten und direkt bei befa-limburg.de bestellen –
-            handgefertigt in Limburg.
+          <Step number="03" title="10 % Rabatt sichern">
+            Email eintragen, Willkommens-Rabatt per Newsletter erhalten und direkt bei
+            befa-limburg.de bestellen.
           </Step>
         </div>
       </section>
 
-      <section className="bg-[var(--color-navy)] text-white py-20">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="font-serif mb-5">Schlafen wie auf Wolken ist kein Zufall.</h2>
-          <p className="text-white/80 text-lg mb-8">
-            Die falsche Decke ist der häufigste Grund für unruhigen Sommerschlaf. Wir
-            helfen dir, in wenigen Minuten die richtige zu finden.
+      {/* TRUST */}
+      <section className="border-y border-[var(--color-border)] py-12 bg-white">
+        <div className="mx-auto max-w-5xl px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <Trust label="Oeko-Tex Standard 100" />
+          <Trust label="Downpass zertifiziert" />
+          <Trust label="Handgefertigt in Limburg" />
+          <Trust label="Familienbetrieb seit 1923" />
+        </div>
+      </section>
+
+      {/* CTA ENDE */}
+      <section className="bg-[var(--color-ink)] text-white py-20">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <h2 className="font-serif mb-5 text-white">
+            Schlafen Sie endlich wieder <em>durch</em>.
+          </h2>
+          <p className="text-white/80 text-lg mb-8 leading-relaxed">
+            Die falsche Decke ist der häufigste Grund für unruhige Sommernächte.
+            Beantworten Sie 9 Fragen und wir zeigen Ihnen die drei BEFA-Decken,
+            die zu Ihrer Schlafsituation passen.
           </p>
           <Link
             href="/sommerdecke/quiz"
-            className="inline-flex items-center gap-2 bg-white text-[var(--color-navy)] px-6 py-3 rounded-[4px] font-medium hover:bg-[var(--color-cream)] transition-colors"
+            className="btn-primary bg-white text-[var(--color-ink)] border-white hover:bg-white/90 hover:text-[var(--color-ink)]"
           >
-            Jetzt Quiz starten →
+            Jetzt Quiz starten
           </Link>
+          <p className="mt-5 text-xs uppercase tracking-[0.15em] text-white/60">
+            90 Sekunden · kostenlos · inklusive Rabatt-Code
+          </p>
         </div>
       </section>
+    </div>
+  );
+}
+
+function Problem({ title, text }: { title: string; text: string }) {
+  return (
+    <div>
+      <div className="w-10 h-[2px] bg-[var(--color-sale)] mx-auto mb-4" />
+      <h3 className="font-serif text-xl mb-2 text-[var(--color-ink)]">{title}</h3>
+      <p className="text-sm text-[var(--color-muted)] leading-relaxed">{text}</p>
+    </div>
+  );
+}
+
+function Solution({
+  tag,
+  title,
+  text,
+}: {
+  tag: string;
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="card p-6 flex flex-col">
+      <span className="text-[0.6875rem] uppercase tracking-[0.12em] text-[var(--color-muted)] font-semibold mb-3">
+        {tag}
+      </span>
+      <h3 className="font-serif text-xl text-[var(--color-ink)] mb-3 leading-snug">
+        {title}
+      </h3>
+      <p className="text-sm text-[var(--color-muted)] leading-relaxed">{text}</p>
     </div>
   );
 }
@@ -73,10 +199,10 @@ export default function SommerdeckeLanding() {
 function Trust({ label }: { label: string }) {
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className="h-10 w-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-accent-dark)]">
+      <div className="h-10 w-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-ink)]">
         ✦
       </div>
-      <span className="text-xs uppercase tracking-wider text-[var(--color-muted)]">
+      <span className="text-xs uppercase tracking-[0.1em] text-[var(--color-muted)] font-semibold">
         {label}
       </span>
     </div>
@@ -94,11 +220,9 @@ function Step({
 }) {
   return (
     <div className="card p-6">
-      <div className="font-serif text-4xl text-[var(--color-accent-dark)] mb-3">
-        {number}
-      </div>
-      <h3 className="font-serif text-2xl mb-2 text-[var(--color-navy)]">{title}</h3>
-      <p className="text-[var(--color-muted)] leading-relaxed">{children}</p>
+      <div className="font-serif text-3xl text-[var(--color-ink)] mb-3">{number}</div>
+      <h3 className="font-serif text-xl mb-2 text-[var(--color-ink)]">{title}</h3>
+      <p className="text-[var(--color-muted)] leading-relaxed text-sm">{children}</p>
     </div>
   );
 }

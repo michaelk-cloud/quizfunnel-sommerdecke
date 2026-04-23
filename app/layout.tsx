@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond } from "next/font/google";
-import Script from "next/script";
+import { Assistant, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { MetaPixel } from "@/components/MetaPixel";
 import { Footer } from "@/components/Footer";
 import { ConsentBanner } from "@/components/ConsentBanner";
 
-const inter = Inter({
-  variable: "--font-inter",
+const assistant = Assistant({
+  variable: "--font-assistant",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  weight: ["400", "500", "600"],
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -26,10 +27,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Finde deine perfekte Sommerdecke | Schlafen wie auf Wolken",
   description:
-    "In 90 Sekunden zur idealen Sommerdecke. Persönliches Matching aus den besten Befa-Decken – Made in Germany, Oeko-Tex zertifiziert.",
+    "Schwitzen Sie nachts? In 90 Sekunden finden Sie die passende Sommerdecke aus der BEFA-Manufaktur – Made in Germany, Oeko-Tex zertifiziert.",
   openGraph: {
-    title: "Finde deine perfekte Sommerdecke",
-    description: "Persönliches Decken-Matching in 90 Sekunden.",
+    title: "Schwitzen Sie nachts? Finden Sie Ihre perfekte Sommerdecke",
+    description: "In 90 Sekunden zur idealen Sommerdecke aus der BEFA-Manufaktur.",
     type: "website",
     locale: "de_DE",
   },
@@ -41,7 +42,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
   return (
-    <html lang="de" className={`${inter.variable} ${cormorant.variable} h-full`}>
+    <html lang="de" className={`${assistant.variable} ${playfair.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-ink)]">
         {pixelId && <MetaPixel pixelId={pixelId} />}
         <main className="flex-1 flex flex-col">{children}</main>

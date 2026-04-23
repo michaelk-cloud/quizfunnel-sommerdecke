@@ -60,7 +60,8 @@ export function QuizEngine() {
       // Keyboard-User sollen selbst weiter-klicken – Auto-Advance klaut Screenreader-Fokus
       return;
     }
-    setTimeout(advance, 280);
+    // Insight kurz sichtbar lassen, bevor wir weiter gehen
+    setTimeout(advance, q.insight ? 1600 : 320);
   };
 
   return (
@@ -98,6 +99,24 @@ export function QuizEngine() {
               />
             ))}
           </div>
+
+          {q.insight && selected && (
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25, delay: 0.1 }}
+              className="mt-6 flex gap-3 rounded-sm border border-[var(--color-border)] bg-[var(--color-offwhite)] px-4 py-3"
+              aria-live="polite"
+            >
+              <span className="text-[var(--color-ink)] shrink-0 mt-0.5" aria-hidden>
+                ✦
+              </span>
+              <p className="text-sm text-[var(--color-ink)]/80 leading-relaxed">
+                <span className="font-semibold text-[var(--color-ink)]">BEFA-Manufaktur · </span>
+                {q.insight}
+              </p>
+            </motion.div>
+          )}
 
           <div className="mt-8 flex items-center justify-between">
             <button

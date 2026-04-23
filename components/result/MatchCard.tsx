@@ -15,8 +15,8 @@ export function MatchCard({ match, rank }: { match: MatchResult; rank: number })
       transition={{ duration: 0.4, delay: 0.1 * rank }}
       className="card overflow-hidden flex flex-col"
     >
-      <div className="relative aspect-[4/3] bg-[var(--color-cream)] overflow-hidden">
-        <div className="absolute top-3 left-3 z-10 bg-[var(--color-navy)] text-white text-xs uppercase tracking-wider px-2.5 py-1 rounded-[3px]">
+      <div className="relative aspect-[4/3] bg-[var(--color-offwhite)] overflow-hidden">
+        <div className="absolute top-3 left-3 z-10 bg-[var(--color-ink)] text-white text-xs uppercase tracking-[0.1em] font-semibold px-2.5 py-1">
           Match #{rank}
         </div>
         <Image
@@ -29,10 +29,36 @@ export function MatchCard({ match, rank }: { match: MatchResult; rank: number })
         />
       </div>
       <div className="p-5 flex-1 flex flex-col">
-        <h3 className="font-serif text-2xl text-[var(--color-navy)] leading-tight">
+        <h3 className="font-serif text-2xl text-[var(--color-ink)] leading-tight">
           {decke.name}
         </h3>
-        <p className="text-sm text-[var(--color-muted)] mt-1 mb-4">{decke.tagline}</p>
+        <p className="text-sm text-[var(--color-muted)] mt-1 mb-3">{decke.tagline}</p>
+
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          <span className="text-[0.625rem] uppercase tracking-[0.08em] font-semibold px-2 py-0.5 border border-[var(--color-border)] text-[var(--color-muted)]">
+            Oeko-Tex
+          </span>
+          {decke.washable && (
+            <span className="text-[0.625rem] uppercase tracking-[0.08em] font-semibold px-2 py-0.5 border border-[var(--color-border)] text-[var(--color-muted)]">
+              60° waschbar
+            </span>
+          )}
+          {decke.vegan && (
+            <span className="text-[0.625rem] uppercase tracking-[0.08em] font-semibold px-2 py-0.5 border border-[var(--color-border)] text-[var(--color-muted)]">
+              Vegan
+            </span>
+          )}
+          {!decke.vegan && (
+            <span className="text-[0.625rem] uppercase tracking-[0.08em] font-semibold px-2 py-0.5 border border-[var(--color-border)] text-[var(--color-muted)]">
+              Downpass
+            </span>
+          )}
+          {decke.allergikerSafe && (
+            <span className="text-[0.625rem] uppercase tracking-[0.08em] font-semibold px-2 py-0.5 border border-[var(--color-border)] text-[var(--color-muted)]">
+              Allergiker
+            </span>
+          )}
+        </div>
 
         <ul className="space-y-2 mb-5 flex-1">
           {reasons.length > 0 ? (
@@ -55,7 +81,7 @@ export function MatchCard({ match, rank }: { match: MatchResult; rank: number })
         <div className="flex items-center justify-between pt-4 border-t border-[var(--color-border)]">
           <div>
             <span className="text-xs text-[var(--color-muted)]">ab</span>
-            <div className="font-serif text-2xl text-[var(--color-navy)]">
+            <div className="font-serif text-2xl text-[var(--color-ink)]">
               {decke.priceFrom.toFixed(2).replace(".", ",")} €
             </div>
           </div>

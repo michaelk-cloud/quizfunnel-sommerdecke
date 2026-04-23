@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Assistant, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { MetaPixel } from "@/components/MetaPixel";
+import { SiteHeader } from "@/components/SiteHeader";
 import { Footer } from "@/components/Footer";
 import { ConsentBanner } from "@/components/ConsentBanner";
 
@@ -45,6 +46,7 @@ export default function RootLayout({
     <html lang="de" className={`${assistant.variable} ${playfair.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-ink)]">
         {pixelId && <MetaPixel pixelId={pixelId} />}
+        <SiteHeader />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
         <ConsentBanner />

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Decke } from "@/lib/quiz/decken";
 import { StickyEmailBanner } from "@/components/StickyEmailBanner";
@@ -34,9 +35,16 @@ export function DeckeDetail({ decke }: { decke: Decke }) {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="aspect-[4/3] rounded-lg bg-white border border-[var(--color-border)] flex items-center justify-center"
+            className="relative aspect-[4/3] rounded-lg bg-white border border-[var(--color-border)] overflow-hidden"
           >
-            <div className="font-serif text-7xl text-[var(--color-border)]">☁︎</div>
+            <Image
+              src={decke.image}
+              alt={decke.name}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+              priority
+            />
           </motion.div>
           <div>
             <p className="trust-chip mb-3">

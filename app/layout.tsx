@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { MetaPixel } from "@/components/MetaPixel";
 import { Footer } from "@/components/Footer";
+import { ConsentBanner } from "@/components/ConsentBanner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -44,6 +45,7 @@ export default function RootLayout({
         {pixelId && <MetaPixel pixelId={pixelId} />}
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
+        <ConsentBanner />
       </body>
     </html>
   );

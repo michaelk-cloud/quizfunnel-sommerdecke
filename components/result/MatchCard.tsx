@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { MatchResult } from "@/lib/quiz/match";
 import { trackPixel } from "../MetaPixel";
@@ -14,11 +15,18 @@ export function MatchCard({ match, rank }: { match: MatchResult; rank: number })
       transition={{ duration: 0.4, delay: 0.1 * rank }}
       className="card overflow-hidden flex flex-col"
     >
-      <div className="relative aspect-[4/3] bg-[var(--color-cream)] flex items-center justify-center">
-        <div className="absolute top-3 left-3 bg-[var(--color-navy)] text-white text-xs uppercase tracking-wider px-2.5 py-1 rounded-[3px]">
+      <div className="relative aspect-[4/3] bg-[var(--color-cream)] overflow-hidden">
+        <div className="absolute top-3 left-3 z-10 bg-[var(--color-navy)] text-white text-xs uppercase tracking-wider px-2.5 py-1 rounded-[3px]">
           Match #{rank}
         </div>
-        <div className="font-serif text-5xl text-[var(--color-border)]">☁︎</div>
+        <Image
+          src={decke.image}
+          alt={decke.name}
+          fill
+          sizes="(min-width: 768px) 33vw, 100vw"
+          className="object-cover"
+          priority={rank === 1}
+        />
       </div>
       <div className="p-5 flex-1 flex flex-col">
         <h3 className="font-serif text-2xl text-[var(--color-navy)] leading-tight">

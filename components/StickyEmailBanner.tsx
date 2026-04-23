@@ -120,14 +120,16 @@ export function StickyEmailBanner() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="mx-auto max-w-4xl px-4 py-4 sm:py-5 flex flex-col sm:flex-row gap-3 sm:gap-5 sm:items-center"
+            className="mx-auto max-w-4xl px-4 py-3 sm:py-5 flex flex-col sm:flex-row gap-2.5 sm:gap-5 sm:items-center"
           >
             <div className="flex-1 min-w-0">
-              <p className="font-serif text-lg sm:text-xl leading-tight text-[var(--color-ink)]">
+              <p className="font-serif text-base sm:text-xl leading-tight text-[var(--color-ink)]">
                 10 % Willkommens-Rabatt sichern.
               </p>
-              <p className="text-xs text-[var(--color-muted)] mt-0.5">
-                Zum BEFA-Newsletter anmelden, Code per Email erhalten. Abmeldung jederzeit möglich.
+              <p className="text-[0.6875rem] sm:text-xs text-[var(--color-muted)] mt-0.5 leading-snug">
+                <span className="hidden sm:inline">Zum BEFA-Newsletter anmelden, Code per Email erhalten. </span>
+                <span className="sm:hidden">Code per Email. </span>
+                Abmeldung jederzeit möglich.
               </p>
             </div>
             <form
@@ -147,18 +149,18 @@ export function StickyEmailBanner() {
                 required
                 placeholder="ihre@email.de"
                 disabled={isPending}
-                className="flex-1 px-4 py-3 border border-[var(--color-border)] rounded-[4px] text-base focus:outline-none focus:border-[var(--color-navy)] bg-white disabled:opacity-60"
+                className="flex-1 min-w-0 px-3 sm:px-4 py-3 min-h-[48px] border border-[var(--color-border)] rounded-[4px] text-base focus:outline-none focus:border-[var(--color-navy)] bg-white disabled:opacity-60"
               />
               <button
                 type="submit"
                 disabled={isPending}
-                className="btn-primary whitespace-nowrap disabled:opacity-70 disabled:cursor-wait"
+                className="btn-primary whitespace-nowrap min-h-[48px] px-4 sm:px-7 text-sm sm:text-[0.9375rem] disabled:opacity-70 disabled:cursor-wait"
               >
-                {isPending ? "…" : "Rabatt holen"}
+                {isPending ? "…" : "Sichern"}
               </button>
             </form>
             {error && (
-              <p role="alert" aria-live="polite" className="text-xs text-red-600 sm:absolute sm:bottom-1">
+              <p role="alert" aria-live="polite" className="text-xs text-red-600">
                 {error}
               </p>
             )}
@@ -168,17 +170,17 @@ export function StickyEmailBanner() {
             key="post"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mx-auto max-w-4xl px-4 py-4 sm:py-5 flex flex-col sm:flex-row gap-3 sm:items-center"
+            className="mx-auto max-w-4xl px-4 py-3 sm:py-5 flex flex-col sm:flex-row gap-2.5 sm:gap-4 sm:items-center"
           >
-            <div className="flex-1">
-              <p className="font-serif text-lg sm:text-xl leading-tight text-[var(--color-ink)]">
+            <div className="flex-1 min-w-0">
+              <p className="font-serif text-base sm:text-xl leading-tight text-[var(--color-ink)]">
                 Ihr Code: <span className="text-[var(--color-sale)] font-semibold">{DISCOUNT_CODE}</span>
               </p>
-              <p className="text-xs text-[var(--color-muted)]">
+              <p className="text-[0.6875rem] sm:text-xs text-[var(--color-muted)] leading-snug">
                 Bei befa-limburg.de im Checkout einlösen. 10 % auf Ihre Sommerdecke.
               </p>
             </div>
-            <button onClick={copyCode} className="btn-secondary whitespace-nowrap">
+            <button onClick={copyCode} className="btn-secondary whitespace-nowrap min-h-[48px] w-full sm:w-auto">
               {copied ? "Kopiert ✓" : "Code kopieren"}
             </button>
           </motion.div>

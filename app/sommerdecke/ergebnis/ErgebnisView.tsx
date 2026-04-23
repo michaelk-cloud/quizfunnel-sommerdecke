@@ -42,15 +42,15 @@ export function ErgebnisView() {
 
   return (
     <>
-      <section className="bg-[var(--color-offwhite)] py-12 sm:py-16">
+      <section className="bg-[var(--color-offwhite)] py-10 sm:py-16">
         <div className="mx-auto max-w-5xl px-5 text-center">
-          <p className="trust-chip justify-center mb-4">
+          <p className="trust-chip justify-center mb-3 sm:mb-4">
             <span>✦</span> Ihr Ergebnis
           </p>
-          <h1 className="font-serif text-[var(--color-ink)] mb-4">
+          <h1 className="font-serif text-[var(--color-ink)] mb-3 sm:mb-4">
             Diese drei Sommerdecken passen zu <em>Ihnen</em>.
           </h1>
-          <p className="text-lg text-[var(--color-muted)] max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-[var(--color-muted)] max-w-2xl mx-auto leading-relaxed">
             Auf Basis Ihrer Antworten haben wir die drei passendsten BEFA-Decken berechnet.
             Sichern Sie sich 10 % Willkommens-Rabatt und bestellen Sie direkt bei BEFA.
           </p>
@@ -58,16 +58,16 @@ export function ErgebnisView() {
       </section>
 
       <section
-        className="mx-auto max-w-6xl px-5 py-12"
-        style={{ paddingBottom: "calc(var(--banner-h, 160px) + 3rem)" }}
+        className="mx-auto max-w-6xl px-4 sm:px-5 py-10 sm:py-12"
+        style={{ paddingBottom: "calc(var(--banner-h, 180px) + 2.5rem)" }}
       >
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-5 sm:gap-6 md:grid-cols-3">
           {matches.map((m, i) => (
             <MatchCard key={m.decke.slug} match={m} rank={i + 1} />
           ))}
         </div>
 
-        <div className="mt-14 border-y border-[var(--color-border)] py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="mt-10 sm:mt-14 border-y border-[var(--color-border)] py-7 sm:py-8 grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-6 text-center">
           <TrustItem value="32" unit="Jahre" label="Manufaktur in Limburg" />
           <TrustItem value="Oeko-Tex" unit="Standard 100" label="Schadstoff-geprüft" />
           <TrustItem value="Downpass" unit="zertifiziert" label="Tierschutz-Standard" />

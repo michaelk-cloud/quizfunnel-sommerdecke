@@ -52,7 +52,12 @@ h3,
   font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
   font-weight: 600;
   letter-spacing: -0.005em;
+}
+:where(h1, h2, h3, .font-serif) {
   color: var(--color-ink);
+}
+:where(h1, h2, h3, .font-serif) em {
+  color: inherit;
 }
 
 h1 {

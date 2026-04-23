@@ -7,31 +7,31 @@ export default function SommerdeckeLanding() {
       {/* HERO */}
       <section className="bg-[var(--color-offwhite)]">
         <div className="mx-auto max-w-7xl grid lg:grid-cols-2 items-stretch">
-          <div className="order-2 lg:order-1 px-6 py-14 sm:py-20 lg:py-24 lg:px-14 flex flex-col justify-center">
-            <p className="trust-chip mb-6">
+          <div className="order-2 lg:order-1 px-5 sm:px-6 py-10 sm:py-16 lg:py-24 lg:px-14 flex flex-col justify-center">
+            <p className="trust-chip mb-4 sm:mb-6">
               <span>✦</span> Made in Germany – seit 1994
             </p>
-            <h1 className="font-serif mb-6 text-[var(--color-ink)] text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.05]">
+            <h1 className="font-serif mb-4 sm:mb-6 text-[var(--color-ink)] text-[clamp(2rem,8vw,3.75rem)] leading-[1.05]">
               Schwitzen Sie
               <br />
               <em>Nacht für Nacht?</em>
             </h1>
-            <p className="text-lg sm:text-xl text-[var(--color-muted)] leading-relaxed mb-10 max-w-xl">
+            <p className="text-base sm:text-xl text-[var(--color-muted)] leading-relaxed mb-7 sm:mb-10 max-w-xl">
               Dann liegt es selten an der Hitze – sondern an Ihrer Decke. Finden Sie in
               90 Sekunden die Sommerdecke aus der BEFA-Manufaktur, die Ihre Körperwärme
               aktiv nach außen leitet.
             </p>
             <div>
-              <Link href="/sommerdecke/quiz" className="btn-primary">
+              <Link href="/sommerdecke/quiz" className="btn-primary w-full sm:w-auto">
                 Jetzt Decke finden – 90 Sekunden
               </Link>
             </div>
-            <p className="mt-5 text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]">
+            <p className="mt-4 sm:mt-5 text-[0.6875rem] sm:text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]">
               Kostenlos · 2 Minuten · unverbindlich
             </p>
           </div>
 
-          <div className="order-1 lg:order-2 relative aspect-[4/5] lg:aspect-auto lg:min-h-[640px]">
+          <div className="order-1 lg:order-2 relative aspect-[4/3] sm:aspect-[4/5] lg:aspect-auto lg:min-h-[640px]">
             <Image
               src="/hero-sommerdecke.webp"
               alt="Sommerdecke in hellem Schlafzimmer – BEFA Limburg"
@@ -45,8 +45,8 @@ export default function SommerdeckeLanding() {
       </section>
 
       {/* PROBLEM */}
-      <section className="mx-auto max-w-4xl px-6 py-20 sm:py-24">
-        <div className="text-center mb-14">
+      <section className="mx-auto max-w-4xl px-5 sm:px-6 py-14 sm:py-24">
+        <div className="text-center mb-10 sm:mb-14">
           <p className="trust-chip justify-center mb-4">Das eigentliche Problem</p>
           <h2 className="font-serif text-[var(--color-ink)] mb-5">
             Wenn Sie nachts schwitzen, ist selten <em>die Hitze</em> schuld.
@@ -74,9 +74,9 @@ export default function SommerdeckeLanding() {
       </section>
 
       {/* LÖSUNG */}
-      <section className="bg-[var(--color-offwhite)] py-20 sm:py-24">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="text-center mb-14">
+      <section className="bg-[var(--color-offwhite)] py-14 sm:py-24">
+        <div className="mx-auto max-w-5xl px-5 sm:px-6">
+          <div className="text-center mb-10 sm:mb-14">
             <p className="trust-chip justify-center mb-4">Die BEFA-Manufaktur</p>
             <h2 className="font-serif text-[var(--color-ink)] mb-5">
               Eine Decke, die Ihre <em>Körperwärme</em> aktiv nach außen leitet.
@@ -108,8 +108,8 @@ export default function SommerdeckeLanding() {
       </section>
 
       {/* WIE FUNKTIONIERT DAS QUIZ */}
-      <section className="mx-auto max-w-4xl px-6 py-20 sm:py-24">
-        <div className="text-center mb-14">
+      <section className="mx-auto max-w-4xl px-5 sm:px-6 py-14 sm:py-24">
+        <div className="text-center mb-10 sm:mb-14">
           <p className="trust-chip justify-center mb-4">So funktioniert es</p>
           <h2 className="font-serif text-[var(--color-ink)] mb-4">
             In 90 Sekunden zu <em>Ihrer</em> Decke.
@@ -132,8 +132,8 @@ export default function SommerdeckeLanding() {
       </section>
 
       {/* TRUST */}
-      <section className="border-y border-[var(--color-border)] py-12 bg-white">
-        <div className="mx-auto max-w-5xl px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <section className="border-y border-[var(--color-border)] py-10 sm:py-12 bg-white">
+        <div className="mx-auto max-w-5xl px-5 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
           <Trust label="Oeko-Tex Standard 100" />
           <Trust label="Downpass zertifiziert" />
           <Trust label="Handgefertigt in Limburg" />
@@ -142,20 +142,20 @@ export default function SommerdeckeLanding() {
       </section>
 
       {/* CTA ENDE */}
-      <section className="bg-[var(--color-ink)] text-white py-20">
-        <div className="mx-auto max-w-2xl px-6 text-center">
+      <section className="bg-[var(--color-ink)] text-white py-14 sm:py-20">
+        <div className="mx-auto max-w-2xl px-5 sm:px-6 text-center">
           <h2 className="font-serif mb-5 text-white">
             Schlafen Sie endlich wieder <em>durch</em>.
           </h2>
-          <p className="text-white/80 text-lg mb-8 leading-relaxed">
+          <p className="text-white/80 text-base sm:text-lg mb-8 leading-relaxed">
             Die falsche Decke ist der häufigste Grund für unruhige Sommernächte.
             Beantworten Sie ein paar kurze Fragen und wir zeigen Ihnen die drei
             BEFA-Decken, die zu Ihrer Schlafsituation passen.
           </p>
-          <Link href="/sommerdecke/quiz" className="btn-secondary">
+          <Link href="/sommerdecke/quiz" className="btn-secondary w-full sm:w-auto">
             Jetzt Quiz starten
           </Link>
-          <p className="mt-5 text-xs uppercase tracking-[0.15em] text-white/60">
+          <p className="mt-5 text-[0.6875rem] sm:text-xs uppercase tracking-[0.15em] text-white/60">
             2 Minuten · unverbindlich · sofort das Ergebnis
           </p>
         </div>

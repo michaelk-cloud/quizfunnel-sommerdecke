@@ -78,7 +78,7 @@ export function MatchCard({ match, rank }: { match: MatchResult; rank: number })
           )}
         </ul>
 
-        <div className="flex items-center justify-between pt-4 border-t border-[var(--color-border)]">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4 border-t border-[var(--color-border)]">
           <div>
             <span className="text-xs text-[var(--color-muted)]">ab</span>
             <div className="font-serif text-2xl text-[var(--color-ink)]">
@@ -97,7 +97,7 @@ export function MatchCard({ match, rank }: { match: MatchResult; rank: number })
                 currency: "EUR",
               })
             }
-            className="btn-primary text-sm"
+            className="btn-primary text-sm w-full sm:w-auto"
           >
             Auf BEFA Limburg ansehen →
           </a>

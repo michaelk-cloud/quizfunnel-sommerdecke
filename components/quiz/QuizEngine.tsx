@@ -65,7 +65,7 @@ export function QuizEngine() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-xl px-5 py-6 sm:py-12">
+    <div className="mx-auto w-full max-w-xl px-4 sm:px-5 py-5 sm:py-12">
       <ProgressBar current={step + 1} total={questions.length} />
 
       <AnimatePresence mode="wait">
@@ -75,19 +75,19 @@ export function QuizEngine() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -24 }}
           transition={{ duration: 0.25 }}
-          className="mt-10"
+          className="mt-6 sm:mt-10"
         >
-          <h1 className="font-serif text-3xl sm:text-4xl leading-tight mb-2 text-[var(--color-navy)]">
+          <h1 className="font-serif text-[1.625rem] sm:text-4xl leading-[1.2] sm:leading-tight mb-2 text-[var(--color-navy)]">
             {q.title}
           </h1>
           {q.subtitle && (
-            <p className="text-[var(--color-muted)] mb-6">{q.subtitle}</p>
+            <p className="text-sm sm:text-base text-[var(--color-muted)] mb-5 sm:mb-6 leading-relaxed">{q.subtitle}</p>
           )}
 
           <div
             role="radiogroup"
             aria-label={q.title}
-            className="space-y-3 mt-8"
+            className="space-y-2.5 sm:space-y-3 mt-5 sm:mt-8"
           >
             {q.options.map((opt, i) => (
               <OptionCard
@@ -118,12 +118,12 @@ export function QuizEngine() {
             </motion.div>
           )}
 
-          <div className="mt-8 flex items-center justify-between">
+          <div className="mt-7 sm:mt-8 flex items-center justify-between gap-3">
             <button
               type="button"
               onClick={() => setStep(Math.max(0, step - 1))}
               disabled={step === 0}
-              className="text-sm text-[var(--color-muted)] hover:text-[var(--color-navy)] disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:underline"
+              className="text-sm text-[var(--color-muted)] hover:text-[var(--color-navy)] disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:underline py-3 -my-3 min-h-[44px]"
             >
               ← Zurück
             </button>
@@ -131,7 +131,7 @@ export function QuizEngine() {
               <button
                 type="button"
                 onClick={advance}
-                className="btn-secondary text-sm"
+                className="btn-secondary text-sm min-h-[48px]"
               >
                 {isLast ? "Ergebnis anzeigen →" : "Weiter →"}
               </button>

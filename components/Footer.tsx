@@ -32,7 +32,7 @@ export function Footer() {
         </div>
         <p className="mt-4 text-xs leading-relaxed">
           © {new Date().getFullYear()} BEFA Limburg Bettwarenfabrik GmbH – Handgefertigte
-          Bettwaren aus Deutschland seit 1923. Die empfohlenen Decken werden direkt bei
+          Bettwaren aus Deutschland seit 1994. Die empfohlenen Decken werden direkt bei
           befa-limburg.de bestellt.
         </p>
       </div>

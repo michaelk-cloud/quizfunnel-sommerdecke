@@ -38,7 +38,7 @@ export const questions: Question[] = [
       { value: "cold", label: "Ich friere trotzdem", emoji: "❄️" },
     ],
     insight:
-      "BEFA fertigt seit 1923 in Limburg – ausgelegt auf deutsche Schlafzimmer, nicht auf klimatisierte Hotelzimmer.",
+      "BEFA fertigt seit 1994 in Limburg – ausgelegt auf deutsche Schlafzimmer, nicht auf klimatisierte Hotelzimmer.",
   },
   {
     id: "roomClimate",
@@ -90,7 +90,7 @@ export const questions: Question[] = [
       { value: "professional", label: "Fachreinigung ist ok", emoji: "✨" },
     ],
     insight:
-      "Unsere waschbaren Modelle behalten ihre Form auch nach dutzenden 60°-Wäschen – das Ergebnis von vier Generationen Bettwaren-Handwerk.",
+      "Unsere waschbaren Modelle behalten ihre Form auch nach dutzenden 60°-Wäschen – das Ergebnis von drei Jahrzehnten Bettwaren-Handwerk.",
   },
   {
     id: "sleepSituation",

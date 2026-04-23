@@ -9,7 +9,7 @@ export default function SommerdeckeLanding() {
         <div className="mx-auto max-w-7xl grid lg:grid-cols-2 items-stretch">
           <div className="order-2 lg:order-1 px-6 py-14 sm:py-20 lg:py-24 lg:px-14 flex flex-col justify-center">
             <p className="trust-chip mb-6">
-              <span>✦</span> Made in Germany – seit 1923
+              <span>✦</span> Made in Germany – seit 1994
             </p>
             <h1 className="font-serif mb-6 text-[var(--color-ink)] text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.05]">
               Schwitzen Sie
@@ -82,7 +82,7 @@ export default function SommerdeckeLanding() {
               Eine Decke, die Ihre <em>Körperwärme</em> aktiv nach außen leitet.
             </h2>
             <p className="text-lg text-[var(--color-muted)] max-w-2xl mx-auto leading-relaxed">
-              In Limburg produziert BEFA seit 1923 Bettdecken, die für deutsche Sommernächte
+              In Limburg produziert BEFA seit 1994 Bettdecken, die für deutsche Sommernächte
               gemacht sind – mit Materialien, die Körperwärme wegführen statt sie zu speichern.
             </p>
           </div>
@@ -137,7 +137,7 @@ export default function SommerdeckeLanding() {
           <Trust label="Oeko-Tex Standard 100" />
           <Trust label="Downpass zertifiziert" />
           <Trust label="Handgefertigt in Limburg" />
-          <Trust label="Familienbetrieb seit 1923" />
+          <Trust label="Familienbetrieb seit 1994" />
         </div>
       </section>
 

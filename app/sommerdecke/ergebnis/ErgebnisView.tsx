@@ -68,7 +68,7 @@ export function ErgebnisView() {
         </div>
 
         <div className="mt-14 border-y border-[var(--color-border)] py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <TrustItem value="100" unit="Jahre" label="Manufaktur in Limburg" />
+          <TrustItem value="32" unit="Jahre" label="Manufaktur in Limburg" />
           <TrustItem value="Oeko-Tex" unit="Standard 100" label="Schadstoff-geprüft" />
           <TrustItem value="Downpass" unit="zertifiziert" label="Tierschutz-Standard" />
           <TrustItem value="Made in" unit="Germany" label="Handgefertigt" />

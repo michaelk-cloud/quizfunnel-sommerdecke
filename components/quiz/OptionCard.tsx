@@ -17,11 +17,13 @@ export function OptionCard({
   return (
     <motion.button
       type="button"
+      role="radio"
+      aria-checked={selected}
       onClick={onClick}
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, delay: 0.05 * index }}
-      className={`group w-full text-left rounded-lg border px-5 py-4 flex items-center gap-4 transition-all ${
+      className={`group w-full text-left rounded-lg border px-5 py-4 flex items-center gap-4 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-navy)] focus-visible:ring-offset-2 ${
         selected
           ? "border-[var(--color-navy)] bg-[var(--color-navy)] text-white"
           : "border-[var(--color-border)] bg-white hover:border-[var(--color-navy)] hover:bg-[var(--color-cream)]"
@@ -50,6 +52,7 @@ export function OptionCard({
         className={`shrink-0 h-5 w-5 rounded-full border-2 flex items-center justify-center ${
           selected ? "border-white" : "border-[var(--color-border)]"
         }`}
+        aria-hidden
       >
         {selected && <span className="h-2 w-2 rounded-full bg-white" />}
       </span>

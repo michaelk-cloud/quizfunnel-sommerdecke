@@ -4,23 +4,22 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { getConsent } from "./ConsentBanner";
+import { markPixelBlocked, markPixelReady, trackPixel } from "@/lib/pixel";
 
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void;
-    __pixelInitialized?: boolean;
-  }
-}
+export { trackPixel };
 
 export function MetaPixel({ pixelId }: { pixelId: string }) {
   const pathname = usePathname();
   const [consent, setConsent] = useState<"accepted" | "rejected" | null>(null);
 
   useEffect(() => {
-    setConsent(getConsent());
+    const initial = getConsent();
+    setConsent(initial);
+    if (initial !== "accepted") markPixelBlocked();
     const handler = (e: Event) => {
       const detail = (e as CustomEvent).detail as "accepted" | "rejected";
       setConsent(detail);
+      if (detail !== "accepted") markPixelBlocked();
     };
     window.addEventListener("consent-change", handler);
     return () => window.removeEventListener("consent-change", handler);
@@ -36,7 +35,13 @@ export function MetaPixel({ pixelId }: { pixelId: string }) {
 
   return (
     <>
-      <Script id="meta-pixel" strategy="afterInteractive">
+      <Script
+        id="meta-pixel"
+        strategy="afterInteractive"
+        onReady={() => {
+          markPixelReady();
+        }}
+      >
         {`
           if (!window.__pixelInitialized) {
             window.__pixelInitialized = true;
@@ -64,10 +69,4 @@ export function MetaPixel({ pixelId }: { pixelId: string }) {
       </noscript>
     </>
   );
-}
-
-export function trackPixel(event: string, params?: Record<string, unknown>) {
-  if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("track", event, params);
-  }
 }

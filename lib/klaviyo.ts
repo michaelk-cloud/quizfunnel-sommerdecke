@@ -70,12 +70,18 @@ export async function subscribeToList(email: string, listId: string) {
   });
 }
 
-export async function trackEvent(email: string, eventName: string, properties: Record<string, unknown>) {
+export async function trackEvent(
+  email: string,
+  eventName: string,
+  properties: Record<string, unknown>,
+  uniqueId?: string,
+) {
   return kfetch("/events/", {
     data: {
       type: "event",
       attributes: {
         properties,
+        ...(uniqueId ? { unique_id: uniqueId } : {}),
         metric: {
           data: { type: "metric", attributes: { name: eventName } },
         },

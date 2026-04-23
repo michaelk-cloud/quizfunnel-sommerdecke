@@ -5,11 +5,19 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Decke } from "@/lib/quiz/decken";
 import { StickyEmailBanner } from "@/components/StickyEmailBanner";
-import { trackPixel } from "@/components/MetaPixel";
+import { trackPixel } from "@/lib/pixel";
+import { useQuizStore } from "@/lib/store";
 
 export function DeckeDetail({ decke }: { decke: Decke }) {
-  const utm = "?utm_source=quizfunnel&utm_medium=referral&utm_campaign=sommerdecke&utm_content=" + decke.slug;
-  const shopUrl = decke.shopUrl + utm;
+  const bedSize = useQuizStore((s) => s.answers.bedSize);
+  const params = new URLSearchParams({
+    utm_source: "quizfunnel",
+    utm_medium: "referral",
+    utm_campaign: "sommerdecke",
+    utm_content: decke.slug,
+  });
+  if (bedSize) params.set("utm_term", bedSize);
+  const shopUrl = decke.shopUrl + "?" + params.toString();
 
   const onBuy = () => {
     trackPixel("InitiateCheckout", {
@@ -119,7 +127,7 @@ export function DeckeDetail({ decke }: { decke: Decke }) {
         </div>
       </section>
 
-      <div className="pb-32 sm:pb-24" />
+      <div style={{ height: "var(--banner-h, 0px)" }} aria-hidden />
       <StickyEmailBanner />
     </>
   );

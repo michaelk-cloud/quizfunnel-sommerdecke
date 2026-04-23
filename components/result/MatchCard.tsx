@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import type { MatchResult } from "@/lib/quiz/match";
-import { trackPixel } from "../MetaPixel";
+import { trackPixel } from "@/lib/pixel";
 
 export function MatchCard({ match, rank }: { match: MatchResult; rank: number }) {
   const { decke, reasons } = match;

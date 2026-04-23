@@ -27,7 +27,17 @@ export function ErgebnisView() {
     }
   }, [mounted, answers, router, markCompleted]);
 
-  if (!mounted) return <div className="min-h-[60vh]" />;
+  if (!mounted) {
+    return (
+      <section className="bg-[var(--color-cream)] py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-5 text-center">
+          <div className="mx-auto h-3 w-24 bg-white/60 rounded mb-6" />
+          <div className="mx-auto h-10 w-80 max-w-full bg-white/60 rounded mb-4" />
+          <div className="mx-auto h-4 w-96 max-w-full bg-white/60 rounded" />
+        </div>
+      </section>
+    );
+  }
   const matches = matchTop3(answers);
 
   return (
@@ -47,7 +57,10 @@ export function ErgebnisView() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-12 pb-36 sm:pb-32">
+      <section
+        className="mx-auto max-w-6xl px-5 py-12"
+        style={{ paddingBottom: "calc(var(--banner-h, 160px) + 3rem)" }}
+      >
         <div className="grid gap-6 md:grid-cols-3">
           {matches.map((m, i) => (
             <MatchCard key={m.decke.slug} match={m} rank={i + 1} />

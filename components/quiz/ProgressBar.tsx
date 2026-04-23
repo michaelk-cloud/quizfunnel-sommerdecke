@@ -8,7 +8,14 @@ export function ProgressBar({ current, total }: { current: number; total: number
         <span>Frage {current} von {total}</span>
         <span>{pct} %</span>
       </div>
-      <div className="h-[3px] w-full bg-[var(--color-cream-dark)] rounded-full overflow-hidden">
+      <div
+        role="progressbar"
+        aria-valuenow={current}
+        aria-valuemin={1}
+        aria-valuemax={total}
+        aria-label={`Fortschritt: Frage ${current} von ${total}`}
+        className="h-[3px] w-full bg-[var(--color-cream-dark)] rounded-full overflow-hidden"
+      >
         <div
           className="h-full bg-[var(--color-navy)] transition-all duration-500 ease-out"
           style={{ width: `${pct}%` }}

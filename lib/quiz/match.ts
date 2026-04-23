@@ -135,29 +135,48 @@ export function matchTop3(answers: Answers): MatchResult[] {
     add(scores, "primaloft-bio", 2);
   }
 
-  // 7. Budget
+  // 7. Schlafsituation – mit Partner heizt das Bett auf, temperatur-regulierende Decken bevorzugen
+  if (answers.sleepSituation === "partner") {
+    add(scores, "tencel-daunendecke", 2, "Zu zweit besonders wichtig: aktive Feuchtigkeitsabfuhr");
+    add(scores, "tencel-gaensedaunendecke", 2, "Tencel-Bezug reguliert bei zwei Personen");
+    add(scores, "clima-primaloft", 2, "Clima-Steppung gleicht Paar-Wärme aus");
+    add(scores, "kamelhaar-sommer", 1);
+  } else if (answers.sleepSituation === "single") {
+    add(scores, "daunendecke-60", 1);
+    add(scores, "mikrofaser-aloe-vera", 1);
+  }
+
+  // 8. Budget
   const budget = answers.budget;
   decken.forEach((d) => {
-    if (budget === "low" && d.priceFrom > 80) add(scores, d.slug, -5);
+    if (budget === "low") {
+      if (d.priceFrom > 80) add(scores, d.slug, -5);
+      else add(scores, d.slug, 2, "Passt in dein Budget");
+    }
     if (budget === "mid") {
       if (d.priceFrom > 150) add(scores, d.slug, -3);
-      if (d.priceFrom >= 60 && d.priceFrom <= 130) add(scores, d.slug, 2);
+      else if (d.priceFrom >= 60 && d.priceFrom <= 150) add(scores, d.slug, 2, "Passt in dein Budget");
     }
     if (budget === "high") {
       if (d.priceFrom > 300) add(scores, d.slug, -2);
-      if (d.priceFrom >= 100 && d.priceFrom <= 250) add(scores, d.slug, 2);
+      else if (d.priceFrom >= 100 && d.priceFrom <= 300) add(scores, d.slug, 2, "Passt in dein Budget");
     }
-    if (budget === "premium" && d.priceFrom >= 150) add(scores, d.slug, 2);
+    if (budget === "premium" && d.priceFrom >= 150) {
+      add(scores, d.slug, 2, "Passt in dein Budget – Premium-Klasse");
+    }
   });
 
-  // Build result, filter hard exclusions and sort
+  // Build result; tie-break: höherer Score zuerst, bei Gleichstand günstigerer Einstiegspreis zuerst
   const results: MatchResult[] = decken
     .map((d) => ({
       decke: d,
       score: scores[d.slug]?.score ?? 0,
       reasons: scores[d.slug]?.reasons ?? [],
     }))
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return a.decke.priceFrom - b.decke.priceFrom;
+    });
 
   // Guarantee we always return 3
   return results.slice(0, 3).map((r) => ({

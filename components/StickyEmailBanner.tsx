@@ -1,21 +1,30 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { useQuizStore } from "@/lib/store";
 import { matchTop3 } from "@/lib/quiz/match";
 import { subscribe } from "@/app/actions/subscribe";
-import { trackPixel } from "./MetaPixel";
-
-const formSchema = z.object({
-  email: z.string().email("Bitte gib eine gültige Email ein."),
-});
-type FormData = z.infer<typeof formSchema>;
+import { trackPixel } from "@/lib/pixel";
+import type { Answers, QuestionId } from "@/lib/quiz/questions";
 
 const DISCOUNT_CODE = process.env.NEXT_PUBLIC_DISCOUNT_CODE || "BEFA10";
+
+const REQUIRED_KEYS: QuestionId[] = [
+  "temperature",
+  "roomClimate",
+  "material",
+  "allergies",
+  "washing",
+  "sleepSituation",
+  "bedSize",
+  "skinFeel",
+  "budget",
+];
+
+function hasAllAnswers(answers: Answers): answers is Required<Answers> {
+  return REQUIRED_KEYS.every((k) => typeof answers[k] === "string" && answers[k]!.length > 0);
+}
 
 export function StickyEmailBanner() {
   const { answers, email, setEmail } = useQuizStore();
@@ -23,45 +32,85 @@ export function StickyEmailBanner() {
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [mounted, setMounted] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-  });
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const submittingRef = useRef(false);
 
   useEffect(() => setMounted(true), []);
 
-  const onSubmit = (data: FormData) => {
+  // Banner-Höhe als CSS-var publizieren, damit Seiten-Content sauber padden kann
+  useEffect(() => {
+    if (!bannerRef.current) return;
+    const el = bannerRef.current;
+    const update = () => {
+      document.documentElement.style.setProperty("--banner-h", `${el.offsetHeight}px`);
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      document.documentElement.style.removeProperty("--banner-h");
+    };
+  }, [email, mounted]);
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (submittingRef.current || isPending) return;
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const emailValue = (formData.get("email") as string | null)?.trim() ?? "";
+
+    if (!emailValue || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+      setError("Bitte gib eine gültige Email-Adresse ein.");
+      return;
+    }
+
+    if (!hasAllAnswers(answers)) {
+      setError("Bitte beantworte erst alle Quiz-Fragen.");
+      return;
+    }
+
+    submittingRef.current = true;
     setError(null);
+
     startTransition(async () => {
       const matches = matchTop3(answers).map((m) => m.decke.slug);
       const res = await subscribe({
-        email: data.email,
-        answers: answers as Record<string, string>,
-        matches: matches as [string, string, string],
+        email: emailValue,
+        answers,
+        matches: [matches[0], matches[1], matches[2]],
       });
       if (res.ok) {
-        setEmail(data.email);
-        trackPixel("Lead", { content_category: "sommerdecke_quiz" });
+        setEmail(emailValue);
+        trackPixel("Lead", {
+          content_category: "sommerdecke_quiz",
+          content_name: "email_submit",
+        });
       } else {
+        submittingRef.current = false;
         setError(res.error ?? "Unbekannter Fehler.");
       }
     });
   };
 
   const copyCode = async () => {
-    await navigator.clipboard.writeText(DISCOUNT_CODE);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText(DISCOUNT_CODE);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard blocked – still fine, code is visible
+    }
   };
 
   if (!mounted) return null;
 
   return (
-    <div className="sticky bottom-0 left-0 right-0 z-40 border-t border-[var(--color-border)] bg-white/95 backdrop-blur shadow-[0_-4px_20px_rgba(28,35,51,0.06)]">
+    <div
+      ref={bannerRef}
+      className="sticky bottom-0 left-0 right-0 z-40 border-t border-[var(--color-border)] bg-white/95 backdrop-blur shadow-[0_-4px_20px_rgba(28,35,51,0.06)]"
+    >
       <AnimatePresence mode="wait">
         {!email ? (
           <motion.div
@@ -80,24 +129,35 @@ export function StickyEmailBanner() {
               </p>
             </div>
             <form
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={onSubmit}
+              noValidate
               className="flex gap-2 w-full sm:w-auto sm:min-w-[380px]"
             >
+              <label htmlFor="sticky-email" className="sr-only">
+                Email-Adresse
+              </label>
               <input
+                id="sticky-email"
+                name="email"
                 type="email"
                 inputMode="email"
                 autoComplete="email"
+                required
                 placeholder="deine@email.de"
-                {...register("email")}
-                className="flex-1 px-4 py-3 border border-[var(--color-border)] rounded-[4px] text-base focus:outline-none focus:border-[var(--color-navy)] bg-white"
+                disabled={isPending}
+                className="flex-1 px-4 py-3 border border-[var(--color-border)] rounded-[4px] text-base focus:outline-none focus:border-[var(--color-navy)] bg-white disabled:opacity-60"
               />
-              <button type="submit" disabled={isPending} className="btn-primary whitespace-nowrap">
+              <button
+                type="submit"
+                disabled={isPending}
+                className="btn-primary whitespace-nowrap disabled:opacity-70 disabled:cursor-wait"
+              >
                 {isPending ? "…" : "Rabatt holen"}
               </button>
             </form>
-            {(errors.email || error) && (
-              <p className="text-xs text-red-600 sm:absolute sm:bottom-1">
-                {errors.email?.message || error}
+            {error && (
+              <p role="alert" aria-live="polite" className="text-xs text-red-600 sm:absolute sm:bottom-1">
+                {error}
               </p>
             )}
           </motion.div>

@@ -1,4 +1,4 @@
-# Quizfunnel Sommerdecke — schlafenwieaufwolken.de
+# Quizfunnel Sommerdecke — schlafenaufwolken.de
 
 Mobile-first Quizfunnel für [BEFA Limburg](https://befa-limburg.de). Nutzer beantworten 9 Fragen, erhalten Top-3-Decken-Match, tragen Email ein, bekommen 10 %-Rabatt-Code und werden zum Shop geleitet.
 
@@ -49,4 +49,4 @@ Siehe `lib/quiz/match.ts`. Jede Quiz-Antwort vergibt positive oder negative Scor
 
 ## Deploy
 
-Vercel → GitHub-Repo verbinden → Env-Vars setzen → Domain `schlafenwieaufwolken.de` aufschalten.
+Vercel → GitHub-Repo verbinden → Env-Vars setzen → Domain `schlafenaufwolken.de` aufschalten.

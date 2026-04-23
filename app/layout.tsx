@@ -19,7 +19,7 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://schlafenwieaufwolken.de";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://schlafenaufwolken.de";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -17,7 +17,16 @@ export function QuizEngine() {
 
   useEffect(() => {
     setMounted(true);
-    trackPixel("InitiateCheckout", { content_category: "quiz_start" });
+    // Standard-Event für Custom Audience + zusätzlich Custom Event für sauberen Funnel-Report
+    trackPixel("InitiateCheckout", {
+      content_category: "sommerdecke_quiz",
+      content_name: "quiz_started",
+    });
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("trackCustom", "QuizStarted", {
+        content_category: "sommerdecke_quiz",
+      });
+    }
 
     const onKey = () => (lastInputWasKeyboard.current = true);
     const onMouse = () => (lastInputWasKeyboard.current = false);
